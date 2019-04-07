@@ -1,0 +1,3 @@
+export const CREATE_PROMPT = "CREATE_PROMPT";
+export const FETCH_PROMPT = "FETCH_PROMPT";
+export const FETCH_PROMPTS = "FETCH_PROMPT";
