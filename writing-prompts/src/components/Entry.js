@@ -5,12 +5,9 @@ import { createPrompt } from "../actions";
 import EntryForm from "./EntryForm";
 
 class Entry extends React.Component {
-  state = { numChars: 0 };
   onSubmit = formValues => {
-    console.log(formValues);
     this.props.createPrompt(formValues);
   };
-
   render() {
     return (
       <Container fluid textAlign='center'>

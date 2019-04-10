@@ -3,38 +3,29 @@ import { Form, TextArea, Button } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 
 class EntryForm extends React.Component {
+  onSubmit = formValues => {
+    this.props.onSubmit(formValues);
+  };
   renderInput = ({ input, label }) => {
-    const className = "field";
+    console.log(input);
     return (
-      <div className={className}>
+      <div className='field'>
         <label>{label}</label>
-        <input {...input} />
+        <input {...input} autoComplete='off' />
       </div>
     );
   };
 
-  onSubmit = formValues => {
-    console.log(formValues);
-    this.props.onSubmit(formValues);
-  };
   render() {
     return (
-      <form
-        className='ui form'
-        onSubmit={this.props.handleSubmit(this.onSubmit)}
-      >
-        <Field name='title' component={this.renderInput} label='Type here.' />
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
+        <Field name='title' component={this.renderInput} label='Enter title' />
         <button className='ui button primary'>Submit</button>
       </form>
     );
   }
 }
 
-const validate = formValues => {
-  return {};
-};
-
 export default reduxForm({
-  form: "entryForm",
-  validate
+  form: "entryForm"
 })(EntryForm);
