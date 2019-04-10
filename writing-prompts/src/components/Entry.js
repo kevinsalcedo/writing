@@ -1,12 +1,16 @@
 import React from "react";
-import { Container, Divider, Header, Form, Input } from "semantic-ui-react";
+import { Container, Divider, Header, Form } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { createPrompt } from "../actions";
+import EntryForm from "./EntryForm";
 
 class Entry extends React.Component {
   state = { numChars: 0 };
-  handleInputChange = event => {
-    const numChars = event.target.value.length;
-    this.setState({ numChars });
+  onSubmit = formValues => {
+    console.log(formValues);
+    this.props.createPrompt(formValues);
   };
+
   render() {
     return (
       <Container fluid textAlign='center'>
@@ -17,16 +21,15 @@ class Entry extends React.Component {
         </Divider>
         <Header.Subheader>Enter your own prompt.</Header.Subheader>
         <Divider hidden />
-        <Form>
-          <Input
-            label={`${150 - this.state.numChars}/150`}
-            labelPosition='right'
-            onChange={e => this.handleInputChange(e)}
-          />
-        </Form>
+        <Container>
+          <EntryForm onSubmit={this.onSubmit} />
+        </Container>
       </Container>
     );
   }
 }
 
-export default Entry;
+export default connect(
+  null,
+  { createPrompt }
+)(Entry);

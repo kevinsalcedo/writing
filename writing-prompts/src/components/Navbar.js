@@ -18,7 +18,7 @@ class Navbar extends React.Component {
           visible={visible}
           width='thin'
         >
-          <Menu.Item onClick={() => this.handleClick()}>
+          <Menu.Item icon onClick={() => this.handleClick()}>
             <Icon name='bars' />
           </Menu.Item>
           <Menu.Item as={Link} to='/' onClick={() => this.handleClick()}>
@@ -31,7 +31,7 @@ class Navbar extends React.Component {
             Submit a Prompt
           </Menu.Item>
         </Sidebar>
-        <Button onClick={() => this.handleClick()}>
+        <Button icon onClick={() => this.handleClick()}>
           <Icon name='bars' />
         </Button>
       </div>
