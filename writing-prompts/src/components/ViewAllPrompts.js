@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Container, Divider, Header, Item } from "semantic-ui-react";
+import { Container, Card, Loader } from "semantic-ui-react";
 import { fetchPrompts } from "../actions";
+import TitleHeader from "./TitleHeader";
 
 class ViewAllPrompts extends React.Component {
   componentDidMount() {
@@ -12,30 +13,23 @@ class ViewAllPrompts extends React.Component {
     if (this.props.prompts.length === 0) {
       return (
         <Container>
-          <Header size='large'>Nothing here!</Header>
+          <Loader active inline='centered' />
         </Container>
       );
     }
     return this.props.prompts.map(prompt => {
-      return (
-        <Item key={prompt.id}>
-          <Header size='large'>{prompt.title}</Header>
-        </Item>
-      );
+      return <Card fluid key={prompt.id} header={prompt.title} />;
     });
   }
 
   render() {
     return (
       <Container fluid textAlign='center'>
-        <Divider horizontal>
-          <Header size='huge' textAlign='center'>
-            All Prompts
-          </Header>
-        </Divider>
-        <Header.Subheader>See everything we have to offer.</Header.Subheader>
-        <Divider hidden />
-        {this.renderList()}
+        <TitleHeader
+          title='View All Prompts'
+          subtitle='View everything we have to offer.'
+        />
+        <Card.Group>{this.renderList()}</Card.Group>
       </Container>
     );
   }

@@ -1,27 +1,41 @@
 import React from "react";
-import { Form, TextArea, Button } from "semantic-ui-react";
+import { Form, Button, Container, Input } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 
 class EntryForm extends React.Component {
+  state = { numChars: 150 };
+
   onSubmit = formValues => {
     this.props.onSubmit(formValues);
   };
+
   renderInput = ({ input, label }) => {
-    console.log(input);
     return (
-      <div className='field'>
+      <Container className='field'>
         <label>{label}</label>
-        <input {...input} autoComplete='off' />
-      </div>
+        <Input {...input} autoComplete='off' />
+      </Container>
     );
   };
 
+  handleChange = event => {
+    const { value } = event.target;
+    this.setState({ numChars: 150 - value.length });
+  };
   render() {
+    const { numChars } = this.state;
     return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <Field name='title' component={this.renderInput} label='Enter title' />
-        <button className='ui button primary'>Submit</button>
-      </form>
+      <Form
+        onSubmit={this.props.handleSubmit(this.onSubmit)}
+        onChange={event => this.handleChange(event)}
+      >
+        <Field
+          name='title'
+          component={this.renderInput}
+          label={`${numChars}/150 characters remaining`}
+        />
+        <Button primary>Submit</Button>
+      </Form>
     );
   }
 }

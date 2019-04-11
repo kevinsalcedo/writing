@@ -1,8 +1,44 @@
 {
   "prompts": [
     {
-      "title": "How do you feel?",
+      "title": "Has anything been bothering me, if so, why?",
       "id": 1
+    },
+    {
+      "title": "What currently am I proud of myself for?",
+      "id": 2
+    },
+    {
+      "title": "What am I most grateful for this year?",
+      "id": 3
+    },
+    {
+      "title": "My perfect day looks like...",
+      "id": 4
+    },
+    {
+      "title": "The best advice I could give someone at the moment is...",
+      "id": 5
+    },
+    {
+      "title": "Are there any decisions I could currently make that would improve my health?",
+      "id": 6
+    },
+    {
+      "title": "What is currently my biggest priority?",
+      "id": 7
+    },
+    {
+      "title": "Did I overreact to anything this week?",
+      "id": 8
+    },
+    {
+      "title": "How do I think my partner feels about me currently?",
+      "id": 9
+    },
+    {
+      "title": "Do I have a current habit at the moment that I would like to correct?",
+      "id": 10
     }
   ]
 }
